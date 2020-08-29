@@ -154,13 +154,11 @@
     <ClCompile Include="integrate.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Params.cpp" />
-    <ClCompile Include="run.cpp" />
     <ClCompile Include="wallHitCheck.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Atom.h" />
     <ClInclude Include="Constants.h" />
-    <ClInclude Include="functions.h" />
     <ClInclude Include="Params.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

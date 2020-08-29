@@ -1,2 +1,5 @@
-﻿  integrate.cpp
+﻿  computeLambda.cpp
+  integrate.cpp
+  main.cpp
+  Generating Code...
   MolDyn.vcxproj -> D:\Dev\C++\MolDyn\Debug\MolDyn.exe

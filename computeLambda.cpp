@@ -15,19 +15,10 @@ double computeLambda(double *gamma, double dt, double temp, double inst_temp) {
 	lambda = sqrt(temp / inst_temp);
 	*/
 	
-	/*
 	//Berendsen
 	double tau = 1e-13; //in seconds
 
 	lambda = sqrt(1 + dt / tau * (temp / inst_temp - 1));
-	*/
-
-	//N-H
-	double qNH = 1e+12;
-
-	*(gamma) += qNH * ((inst_temp - temp) / temp) * dt;
-	
-	lambda = qNH * *(gamma);
 	
 	return lambda;
 

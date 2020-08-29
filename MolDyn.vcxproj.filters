@@ -33,9 +33,6 @@
     <ClCompile Include="Params.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="run.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="wallHitCheck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,9 +48,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Params.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

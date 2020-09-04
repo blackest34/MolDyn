@@ -8,7 +8,7 @@ The paramters are defined in the input.txt file (REQUIRED). An example is includ
 The parameters are to be included in ALL CAPS followed by an equal sign '=' Any amount of spaces can be included.
 The parameters are the following:
 
-NATOMS = (INT) total number of atoms.
+NATOMS = (INT) total number of atoms.\n
 TEMP = (DOUBLE) temperature
 DT = (DOUBLE) timestep in seconds (scientific notation allowed)
 STEPS = (INT) total number of steps in the simulation

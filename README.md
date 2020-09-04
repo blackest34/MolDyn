@@ -1,4 +1,4 @@
-# MolDyn vs 0.2
+# MolDyn v0.2
 
 A molecular Dynamic code written in C++ by Giuliano Carchini
 

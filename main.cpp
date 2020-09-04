@@ -5,7 +5,6 @@
 
 //Constants and Functions
 #include "Constants.h"
-//#include "functions.h"
 
 //Classes
 #include "Atom.h"
@@ -16,31 +15,42 @@ using std::cout;
 using std::endl;
 
 //function declarations
+void readInput(Params &myParams);
 void integrate(Atom atoms[], int nAtoms, double dt, double lambda);
 void wallHitCheck(Atom atoms[], int nAtoms, double box[]);
 double computeTemp(Atom atoms[], int nAtoms);
-double computeLambda(double* gamma, double dt, double temp, double inst_temp);
+double computeLambda(double dt, double temp, double inst_temp);
 void dump(Atom atoms[], int nAtoms, ofstream& myfile, ofstream& outputThermo, double inst_temp, double box[], int step);
 
 int main() {
 
     Params myParams;
 
+    readInput(myParams);
+    
+    int nAtoms = myParams.getNatoms();
     double temp = myParams.getTemp();
     double dt = myParams.getDt();
-    int nAtoms = myParams.getNatoms();
     int nSteps = myParams.getSteps();
     int freq = myParams.getFreq();
-
+    string ofName = myParams.getOfname();
+       
     std::default_random_engine gen;
     std::uniform_real_distribution<double> distrPos(0.0, 1.0);
     std::uniform_real_distribution<double> distrVel(-1.0, 1.0);
 
+    cout << "nAtoms = " << nAtoms << endl;
+    cout<< "temp = " << temp << endl;
+    cout << "dt = " << dt << endl;
+    cout << "nsteps = " << nSteps << endl;
+    cout << "freq = " << freq << endl;
+    cout << "ofname = " << ofName << endl;
+        
     double box[6];
     for (int i = 0; i < 6; i++)
         box[i] = *(myParams.getBox() + i);
 
-    Atom* atoms = new Atom[nAtoms];
+   Atom* atoms = new Atom[nAtoms];
 
     double init[3];
 
@@ -69,15 +79,12 @@ int main() {
 
      int step = 0;
 
-     //gamma for NH thermostat
-     double gamma = 0; 
-
      //main loop
      while (step <= nSteps) {
 
          double inst_temp = computeTemp(atoms, nAtoms);
 
-         double lambda = computeLambda(&gamma, dt, temp, inst_temp);
+         double lambda = computeLambda(dt, temp, inst_temp);
 
          integrate(atoms, nAtoms, dt, lambda);
          

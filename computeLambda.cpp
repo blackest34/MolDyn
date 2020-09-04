@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 
-double computeLambda(double *gamma, double dt, double temp, double inst_temp) {
+double computeLambda(double dt, double temp, double inst_temp) {
 	
 	double lambda = 0;
 

@@ -1,0 +1,7 @@
+NATOMS = 50
+TEMP = 400.0
+DT = 1e-15
+STEPS = 100000
+FREQ = 1000
+BOX = 0 1e-8 0 1e-8 0 1e-8 
+OFNAME = traj.dump

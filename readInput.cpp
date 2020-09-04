@@ -20,59 +20,58 @@ void parsing(string &input);
 
 void readInput(Params &myParams){
 
+	int pos = 0;
+	string line;
+	string key;
+	stringstream value;
+	
 	int value_i = 0;
 	double value_d = 0.0;
 	double s_box[6];
 	string s_ofname;
 	
 	ifstream infile("input.txt");
-	string line;
 	
 	if (infile.is_open()) {
-		while (getline(infile, line, '=')) {
-			parsing(line);
-			if (line.compare("NATOMS") == 0) {
-				infile >> value_i;
+		while (getline(infile, line)) {
+			if (line.empty()) 
+				continue;
+			pos = line.find_first_of("=");
+			key = line.substr(0, pos);
+			stringstream value(line.substr(pos + 1));
+			parsing(key);
+			
+			if (key.compare("NATOMS") == 0) {
+				value >> value_i;
 				myParams.setNatoms(value_i);
-				getline(infile, line);
 			}
-			else if (line.compare("DT") == 0) {
-				getline(infile, line);
-				stringstream ss_dt(line);
-				ss_dt >> scientific >> value_d;
+			else if (key.compare("TEMP") == 0) {
+				value >> value_d;
+				myParams.setTemp(value_d);
+			}
+			else if (key.compare("DT") == 0) {
+				value >> scientific >> value_d;
 				myParams.setDt(value_d);
 			}
-			else if (line.compare("TEMP") == 0) {
-				infile >> value_d;
-				myParams.setTemp(value_d);
-				getline(infile, line);
-			}
-			else if (line.compare("STEPS") == 0) {
-				infile >> value_i;
+			else if (key.compare("STEPS") == 0) {
+				value >> value_i;
 				myParams.setSteps(value_i);
-				getline(infile, line);
 			}
-			else if (line.compare("FREQ") == 0) {
-				infile >> value_i;
+			else if (key.compare("FREQ") == 0) {
+				value >> value_i;
 				myParams.setFreq(value_i);
-				getline(infile, line);
 			}
-			else if (line.compare("BOX") == 0) {
-				getline(infile, line);
-				stringstream ss_box(line);
+			else if (key.compare("BOX") == 0) {
 				for (int i = 0; i < 6; i++) {
-					ss_box >> scientific >> s_box[i];
+					value >> scientific >> s_box[i];
 				}
 				myParams.setBox(s_box);
 			}
-			else if (line.compare("OFNAME") == 0) {
-				infile >> s_ofname;
+			else if (key.compare("OFNAME") == 0) {
+				value >> s_ofname;
 				myParams.setOfname(s_ofname);
 			}
-			else
-				getline(infile, line);
 		}
-	
 	}
 	else {
 		cout << "Unable to open the file input.txt or the file does not exist." << endl;
@@ -82,15 +81,15 @@ void readInput(Params &myParams){
 	infile.close();
 }
 
-void parsing (string &input){
+void parsing (string &key){
 
-	int position = 0;
+	int pos = 0;
 	
-	position = input.find_first_of(' ');
+	pos = key.find_first_of(' ');
 
-	while (position != input.npos) {
-		input.erase(position, 1);
-		position = input.find_first_of(' ');
+	while (pos != key.npos) {
+		key.erase(pos, 1);
+		pos = key.find_first_of(' ');
 	}
 	
 }

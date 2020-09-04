@@ -6,13 +6,13 @@
 using std::string;
 
 class Params {
-    int natoms =0;
-    double dt=0;
-    double temp=0;
-    int steps=0;
-    int freq=0;
-    double box[6];
-    string ofname= "test.dump";
+    int natoms =100;
+    double dt=1e-15;
+    double temp=300;
+    int steps = 100000;
+    int freq=1000;
+    double box[6] = { 0, 1e-8, 0, 1e-8, 0, 1e-8 };
+    string ofname= "traj.dump";
 public:
     int getNatoms();
     double getDt();

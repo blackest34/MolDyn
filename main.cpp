@@ -44,8 +44,12 @@ int main() {
     cout << "dt = " << dt << endl;
     cout << "nsteps = " << nSteps << endl;
     cout << "freq = " << freq << endl;
+    cout << "box = ";
+    for (int i = 0; i < 6; i++)
+        cout << *(myParams.getBox() + i) << "\t"; 
+    cout << endl;
     cout << "ofname = " << ofName << endl;
-        
+
     double box[6];
     for (int i = 0; i < 6; i++)
         box[i] = *(myParams.getBox() + i);

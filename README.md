@@ -1,11 +1,11 @@
-# MolDyn v0.2
+# MolDyn v0.21
 
 A molecular Dynamic code written in C++ by Giuliano Carchini
 
 The program simulates a box of noninteracting particles (hydrogen mass) with Berendsen thermostat. 
 
 The paramters are defined in the input.txt file (REQUIRED). An example is included in the repository.
-The parameters are to be included in ALL CAPS followed by an equal sign '=' Any amount of spaces can be included.
+The parameters are to be included in ALL CAPS followed by an equal sign '=' Any amount of spaces or empty lines can be included.
 The parameters are the following:
 
 NATOMS = (INT) total number of atoms.
@@ -22,6 +22,6 @@ BOX = (6xDOUBLE) six values that define the box (xmin, xmax, ymin, ymax, zmin, z
 
 OFNAME = (STRING) name for the trajectory file
 
-No default values are included (yet)
+The input file in the repository shows the default values. If any value is not present in the file, the default value is used.
 
 More to come...

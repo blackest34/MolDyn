@@ -1,6 +1,9 @@
 # MolDyn v0.21
 
-A molecular Dynamic code written in C++ by Giuliano Carchini
+A molecular Dynamic code written in C++ by Giuliano Carchini.
+
+Based on an idea of the youtube channel "Computational Science & Engineering"
+https://www.youtube.com/watch?v=6gVoPVosXRs&list=PLArnKtQUOiC4QsdsD5algDudDblZ3w5Oy&index=1
 
 The program simulates a box of noninteracting particles (hydrogen mass) with Berendsen thermostat. 
 
